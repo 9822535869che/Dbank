@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decentralized Bank | Web3 DApp</title>
+    <link rel="stylesheet" href="Dbank.css">
+    <!-- Ethers.js Version 6 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.5/ethers.umd.min.js"></script>
+    <script>
+        // สำรอง: ถ้า cdnjs โหลดไม่ได้ ให้ลองโหลดจาก jsDelivr
+        if (!window.ethers) {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"><\/script>');
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+
+            <div class="logo">
+                <div class="logo-icon">⬡</div>
+                <div class="logo-text">
+                    <h2>Decentralized</h2>
+                    <h2>Bank</h2>
+                </div>
+            </div>
+
+            <button class="wallet-connect" id="connectWallet">
+                <span>🦊</span>
+                <span id="walletAddress">Connect Wallet</span>
+                <span class="arrow">➜</span>
+            </button>
+
+        </nav>
+
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="welcome-badge">
+                    ⚡ Welcome to Web3 Bank
+                </div>
+
+                <h1>
+                    Decentralized<br>
+                    Banking for <span>Everyone</span>
+                </h1>
+
+                <p>
+                    Deposit • Withdraw • Check Blance<br>
+                    All on Ethereum Blockchain
+                </p>
+            </div>
+
+
+            <!-- WALLET CARD -->
+            <div class="wallet-card" id="portfolio">
+
+                <div class="wallet-top">
+                    <span>◈</span> Your Wallet
+                </div>
+
+                <div class="wallet-address">
+                    <span id="walletAddressCard">Not Connected</span>
+                    <button class="copy-btn" id="copyAddress">▣</button>
+                </div>
+
+                <div class="wallet-divider"></div>
+
+                <div class="balance-label">Blance</div>
+
+                <div class="balance">
+                    <span id="balance">0.0000</span>
+                    <span>ETH</span>
+                </div>
+
+                <div class="usd-balance" id="usdBalance">
+                    ≈ $0.00 USD
+                </div>
+
+                <div class="usd-balance" id="bankBalance">
+                    Bank Blance: -
+                </div>
+
+                <div class="ethereum-icon">◆</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DASHBOARD SECTION -->
+        <section class="dashboard">
+
+            <!-- QUICK ACTIONS -->
+            <div class="quick-actions">
+
+                <h3>⚡ Quick Actions</h3>
+
+                <!-- CONTRACT ADDRESS -->
+                <div class="amount-input" style="margin:0 0 18px;">
+                    <label for="contractAddress" style="display:block;font-size:14px;color:#8793b2;margin-bottom:6px;">
+                        Smart Contract Address
+                    </label>
+                    <div style="display:flex;gap:10px;">
+                        <input
+                            type="text"
+                            id="contractAddress"
+                            placeholder="0x... (ใส่แอดเดรส Contract ที่ Deploy แล้ว)"
+                            maxlength="42"
+                            spellcheck="false"
+                            autocomplete="off"
+                        >
+                        <button class="wallet-connect" id="connectContractBtn" type="button" style="white-space:nowrap;">
+                            <span>🔗</span>
+                            <span>Connect</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="action-container">
+
+                    <button class="action-card deposit" id="depositBtn">
+                        <span class="action-icon">↓</span>
+                        <span>Deposit</span>
+                    </button>
+
+                    <button class="action-card withdraw" id="withdrawBtn">
+                        <span class="action-icon">↑</span>
+                        <span>Withdraw</span>
+                    </button>
+
+                    <button class="action-card check" id="checkBalanceBtn">
+                        <span class="action-icon">⌕</span>
+                        <span>Check Blance</span>
+                    </button>
+
+                </div>
+
+                <div class="amount-input">
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount (ETH)"
+                        min="0"
+                        step="0.0001"
+                    >
+                </div>
+
+                <p id="statusMessage" class="status-message"></p>
+
+            </div>
+
+
+            <!-- STUDENT PROFILE -->
+            <div class="profile-card" id="about">
+
+                <h3>♟ Your Profile</h3>
+
+                <div class="profile-content">
+
+                    <div class="profile-info">
+
+                        <div class="profile-item">
+                            <span>Student ID</span>
+                            <strong>66087954</strong>
+                        </div>
+
+                        <div class="profile-item">
+                            <span>Name</span>
+                            <strong>เมธาพร ทองนาค</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="graduate-icon">🎓</div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- TRANSACTION HISTORY -->
+        <section class="transaction-section" id="history">
+
+            <div class="transaction-header">
+
+                <h3>◈ Recent Transactions</h3>
+
+                <a href="#">View All →</a>
+
+            </div>
+
+            <div class="transaction-table">
+
+                <div class="table-row table-heading">
+                    <span>Type</span>
+                    <span>Amount</span>
+                    <span>Transaction Hash</span>
+                    <span>Status</span>
+                </div>
+
+                <div class="empty-transaction" id="transactionList">
+                    No transactions yet
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <div>
+                © 2026 Decentralized Bank
+            </div>
+
+            <div>
+                Built on <span>♦ Ethereum Blockchain</span>
+            </div>
+
+        </footer>
+
+    </div>
+
+    <!-- โหลดไฟล์ JavaScript แยก -->
+    <script src="Dbank0.js"></script>
+
+</body>
+</html>

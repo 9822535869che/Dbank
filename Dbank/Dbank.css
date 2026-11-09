@@ -1,0 +1,547 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    background: #eef3ff;
+    color: #101b45;
+    padding: 20px;
+}
+
+.main-container {
+    max-width: 1450px;
+    margin: auto;
+    background: linear-gradient(135deg, #f8faff, #eaf0ff);
+    border-radius: 28px;
+    padding: 15px;
+    box-shadow: 0 15px 45px rgba(36, 80, 180, 0.12);
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar {
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 22px;
+    border: 1px solid #e3eaff;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 55px;
+    color: #2465ec;
+    font-weight: bold;
+}
+
+.logo-text h2 {
+    font-size: 21px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #26345d;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background: #1765f5;
+    color: white;
+    box-shadow: 0 5px 15px rgba(23, 101, 245, 0.2);
+}
+
+.wallet-connect {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 22px;
+    background: #e7edff;
+    border: none;
+    border-radius: 30px;
+    color: #17254c;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.wallet-connect:hover {
+    background: #d5e2ff;
+    transform: translateY(-2px);
+}
+
+.wallet-connect:active {
+    transform: scale(0.97);
+}
+
+.wallet-connect span:first-child {
+    font-size: 23px;
+}
+
+.arrow {
+    color: #16a36a;
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 35px;
+    padding: 55px 35px;
+    min-height: 450px;
+}
+
+.welcome-badge {
+    display: inline-block;
+    background: #e5edff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: clamp(35px, 4vw, 55px);
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.hero-content h1 span {
+    color: #1765f5;
+}
+
+.hero-content p {
+    font-size: 20px;
+    line-height: 1.7;
+    margin-top: 18px;
+    color: #34446f;
+}
+
+.explore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 15px 35px;
+    background: #1765f5;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(23, 101, 245, 0.25);
+    transition: 0.3s;
+}
+
+.explore-btn:hover {
+    background: #084bd0;
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   WALLET CARD
+========================= */
+.wallet-card {
+    position: relative;
+    min-height: 305px;
+    padding: 35px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: linear-gradient(125deg, #0755e8, #3789ff, #a0d2ff);
+    color: white;
+    box-shadow: 0 15px 35px rgba(31, 102, 232, 0.25);
+}
+
+.wallet-top {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.wallet-top span {
+    margin-right: 8px;
+}
+
+.wallet-address {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.copy-btn {
+    border: none;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    border-radius: 8px;
+    padding: 7px 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.wallet-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 25px 0;
+}
+
+.balance-label {
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+.balance {
+    font-size: 38px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.balance span:last-child {
+    font-size: 23px;
+}
+
+.usd-balance {
+    margin-top: 5px;
+    opacity: 0.85;
+    font-size: 16px;
+}
+
+.ethereum-icon {
+    position: absolute;
+    right: 45px;
+    top: 95px;
+    font-size: 115px;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================
+   DASHBOARD & ACTIONS
+========================= */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 25px;
+    margin: 0 20px 20px;
+}
+
+.quick-actions,
+.profile-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #e6ecff;
+    border-radius: 22px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(36, 80, 180, 0.05);
+}
+
+.quick-actions h3,
+.profile-card h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.action-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.action-card {
+    min-height: 120px;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+}
+
+.action-icon {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.deposit {
+    background: #e5edff;
+    color: #1765f5;
+}
+
+.withdraw {
+    background: #f0e9ff;
+    color: #8139e8;
+}
+
+.check {
+    background: #e5f6ef;
+    color: #138d57;
+}
+
+.amount-input {
+    margin-top: 18px;
+}
+
+.amount-input input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid #d9e2f5;
+    background: #f8faff;
+    outline: none;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.amount-input input:focus {
+    border-color: #1765f5;
+    box-shadow: 0 0 0 3px rgba(23, 101, 245, 0.1);
+}
+
+.status-message {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-message.success {
+    color: #16a36a;
+}
+
+.status-message.error {
+    color: #e63946;
+}
+
+
+/* =========================
+   PROFILE SECTION
+========================= */
+.profile-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 140px;
+}
+
+.profile-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.profile-item span {
+    color: #8793b2;
+    font-size: 14px;
+}
+
+.profile-item strong {
+    font-size: 16px;
+}
+
+.graduate-icon {
+    font-size: 65px;
+    padding: 15px;
+}
+
+
+/* =========================
+   TRANSACTION HISTORY
+========================= */
+.transaction-section {
+    margin: 0 20px 20px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 22px;
+    border: 1px solid #e6ecff;
+    box-shadow: 0 5px 18px rgba(36, 80, 180, 0.05);
+}
+
+.transaction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.transaction-header h3 {
+    font-size: 20px;
+}
+
+.transaction-header a {
+    color: #1765f5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.transaction-table {
+    width: 100%;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    gap: 10px;
+    padding: 15px;
+    align-items: center;
+}
+
+.table-heading {
+    background: #edf2ff;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.empty-transaction {
+    text-align: center;
+    padding: 30px;
+    color: #9aa5bd;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 35px;
+    color: #596789;
+    font-size: 14px;
+}
+
+.footer span {
+    color: #1765f5;
+    font-weight: 600;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 900px) {
+    body {
+        padding: 10px;
+    }
+
+    .navbar {
+        height: auto;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 35px 15px;
+    }
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        margin: 0 5px 15px;
+    }
+
+    .transaction-section {
+        margin: 0 5px 15px;
+        overflow-x: auto;
+    }
+
+    .transaction-table {
+        min-width: 600px;
+    }
+}
+
+@media (max-width: 550px) {
+    .nav-menu a {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .wallet-connect {
+        padding: 10px 14px;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .wallet-card {
+        padding: 25px;
+    }
+
+    .balance {
+        font-size: 30px;
+    }
+
+    .ethereum-icon {
+        right: 15px;
+        font-size: 75px;
+    }
+
+    .action-container {
+        grid-template-columns: 1fr;
+    }
+
+    .action-card {
+        min-height: 85px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
